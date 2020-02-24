@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/IngeDW/project-tech#readme",
   "dependencies": {
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "moment-timezone": "^0.5.27",
     "nodemon": "^2.0.2"

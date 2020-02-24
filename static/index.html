@@ -1,0 +1,58 @@
+
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0">
+  <title>Datingapp</title>
+   <link rel="stylesheet" href="css/style.css">  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Asap:600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+
+
+        <nav>
+            <ul>
+                <li><a href="index.html"><img id='logo' src="images/logo2.png" alt=""></a></li>
+
+            </ul>
+        </nav>
+
+
+        <form action="gegevens.html">
+
+            <!--<img id="backicon" src="images/back.svg" alt=""> -->
+            <div id="progressbar">
+              <div></div>
+            </div>
+
+            <legend>Meld je aan</legend>
+
+
+            <fieldset>
+                <label from='gebruikersnaam'>Gebruikersnaam</label>
+                <input id='gebruikersnaam' type="text" required> <br>
+                <label from='aankomst'>E-mail</label>
+                <input id='aankomst' type="email" required> <br>
+                <label from='wachtwoord'>Wachtwoord</label>
+                <input id='wachtwoord' type="password" pattern=".{8,}"   required title="8 characters minimum" required> <br>
+            </fieldset>
+
+           <p id='login'>Ben je al geregisteerd? <a href="#">Log in</a></p>
+
+            <input type="submit" value="Maak een profiel aan" href="gegevens.html">
+
+        </form>
+
+    </header>
+
+
+
+    <script src="js/datingapp.js"> </script>
+
+
+</body>
+
+</html>
