@@ -1,0 +1,28 @@
+{
+  "name": "datingapp",
+  "version": "1.0.0",
+  "description": "datingapp",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IngeDW/project-tech.git"
+  },
+  "keywords": [
+    "daten"
+  ],
+  "author": "Inge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IngeDW/project-tech/issues"
+  },
+  "homepage": "https://github.com/IngeDW/project-tech#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "moment-timezone": "^0.5.27",
+    "nodemon": "^2.0.2"
+  }
+}
