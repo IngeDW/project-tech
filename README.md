@@ -17,3 +17,10 @@ Functionaliteit: profiel aanmaken
 * Open mijn app door in de browser te gaan naar localhost:3000
 * Je bevindt je nu in mijn app
 
+#### Bronnen
+o.a.
+
+https://ejs.co/
+https://expressjs.com
+https://nodejs.org/en/
+https://cloud.mongodb.com/
