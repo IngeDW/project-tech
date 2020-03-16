@@ -44,12 +44,11 @@ app.get('/about', (req, res) => res.send('Over mij'))
 app.get('/file', (req, res) => res.sendFile('/Users/inge/Documents/• HVA/JAAR 2/TECH/datingapp/static/images/banner6.jpg'))
 app.get('/mp3', (req, res) => res.sendFile('/Users/inge/Documents/• HVA/JAAR 2/TECH/datingapp/static/images/mpvierrr.mp4'))
 app.get('/profile/:id', profile)
-app.post('/add-profile', upload.single('cover'), addProfile, myForm)
+app.post('/add-profile', upload.single('cover'), myForm, addProfile)
 app.post('/', upload.single('cover'), addProfile)
 
 
-function myForm(req, res){
-  const id = id
+function myForm(req, res, next){
   const username = req.body.username
   const regio = req.body.regio
   const jaar = req.body.jaar
@@ -57,7 +56,6 @@ function myForm(req, res){
   const biografie = req.body.biografie
   const cover = req.file ? req.file.filename : null
   const form = {
-    id: id,
     name: username,
     regio: regio,
     jaar: jaar,
@@ -67,6 +65,7 @@ function myForm(req, res){
   }
   req.session.form = form
   db.collection('profiles').insertOne(req.session.form)
+ next()
 }
 
 
@@ -76,10 +75,9 @@ app.get('/profile/:id', profile)
 
 const allProfiles = []
 
-function addProfile(req, res) {
+function addProfile(req, res, next) {
   console.log(req.body);
   var id = slug(req.body.username).toLowerCase()
-
   db.collection('profiles').insertOne(req.session.form, function (error, response) {
     if(error) {
         console.log('Error occurred while inserting')
@@ -88,6 +86,7 @@ function addProfile(req, res) {
       res.redirect('profile/' + id)
     }
  })
+ next()
 }
 
 
