@@ -1,4 +1,4 @@
-# project-tech
+# Projectt Tech
 
 TECH is een project in het tweede jaar van de opleiding CMD waar we een datingsite gaan maken. Individueel werken we 1 functionaliteit uit. 
 
@@ -13,14 +13,14 @@ Functionaliteit: profiel aanmaken
 * Download mijn files (groene knop rechts boven)
 * Vraag mijn .env file aan
 * Ga in de terminal naar de map waarin mijn files zitten van het project
-* In de terminal: node server.js
+* In de terminal: npm start
 * Open mijn app door in de browser te gaan naar localhost:3000
 * Je bevindt je nu in mijn app
 
 #### Bronnen
 o.a.
 
-https://ejs.co/
-https://expressjs.com
-https://nodejs.org/en/
-https://cloud.mongodb.com/
+* https://ejs.co/
+* https://expressjs.com
+* https://nodejs.org/en/
+* https://cloud.mongodb.com/
