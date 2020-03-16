@@ -56,7 +56,7 @@ function myForm(req, res, next){
   const biografie = req.body.biografie
   const cover = req.file ? req.file.filename : null
   const form = {
-    name: username,
+    username: username,
     regio: regio,
     jaar: jaar,
     gender: gender,
@@ -86,7 +86,6 @@ function addProfile(req, res, next) {
       res.redirect('profile/' + id)
     }
  })
- next()
 }
 
 
