@@ -49,28 +49,24 @@ app.post('/', upload.single('cover'), myForm)
 
 
 function myForm(req, res, next){
-  console.log(req.body);
-  var id = slug(req.body.username).toLowerCase()
+  const id = slug(req.body.username).toLowerCase()
+  req.session.user = {
+  		username: req.body.username,
+  		regio: req.body.regio,
+  		jaar: req.body.jaar,
+      gender:req.body.gender,
+      biografie: req.body.biografie,
+      cover: req.file ? req.file.filename : null
+  	};
 
-  const username = req.body.username
-  const regio = req.body.regio
-  const jaar = req.body.jaar
-  const gender = req.body.gender
-  const biografie = req.body.biografie
-  const cover = req.file ? req.file.filename : null
-  const form = {
-    username: username,
-    regio: regio,
-    jaar: jaar,
-    gender: gender,
-    biografie: biografie,
-    cover: cover
-  }
-  req.session.form = form
-  db.collection('profiles').insertOne(req.session.form)
-  res.redirect('profile/' + id)
- next()
+  db.collection('profiles').insertOne(req.session.user)
+  console.log(req.session.user)
+  res.redirect('profile/' + req.body.username);
 }
+
+
+
+
 
 
 app.get('/profile/:id', profile)
@@ -103,12 +99,12 @@ const allProfiles = []
 
 
 function profile(req, res) {
-  db.collection('profiles').find().toArray(function (err, data){
+  // db.collection('profiles').find().toArray(function (err, data){
       const id = req.params.id
-      const profile = data.filter(item => item.id === id)[0];
-      res.render('result.ejs', profile);
-   })
-}
+      // const profile = data.filter(item => item.id === id)[0];
+      res.render('result.ejs', req.session.user);
+   }
+// }
 
 
 app.get('*', (req, res) => res.send('404 error not found'))
