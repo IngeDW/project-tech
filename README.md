@@ -22,7 +22,7 @@ De app werkt als volgt. Open de app op localhost:3000. Je komt op een scherm waa
 * Je bevindt je nu in mijn app
 
 ### Na peer-feedback
-Carlijn heeft me geholpen met mijn laatste errors en heeft daarna mijn werk gepeer-reviewd. Ze gaf aan dat ik nog wat meer comments kon plaatsen en mijn code kan verschonen. Ik ben alle code weggehaald die ik had ge-// en de volgorde wat logischer gemaakt. Ook heb ik met haar hulp een license.md aangemaakt. Ook heb ik na de peer-review mijn readme.md aangepast met meer informatie over mijn project en hoe je mijn app kunt bekijken.
+Carlijn heeft me geholpen met mijn laatste errors en heeft daarna mijn werk gepeer-reviewd. Ze gaf aan dat ik nog wat meer comments kon plaatsen en mijn code kan verschonen. Ik ben alle code weggehaald die ik had ge-// en de volgorde wat logischer gemaakt. Ook heb ik met haar hulp een license.md aangemaakt en heb ik verder na de peer-review mijn readme.md aangepast met meer informatie over mijn project en hoe je mijn app kunt bekijken.
 
 
 #### Bronnen (o.a.)
