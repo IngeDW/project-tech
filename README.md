@@ -8,7 +8,11 @@ De job story die ik uitwerk is:  Wanneer ik als vrijgezel op de datingsite ben e
 
 Functionaliteit: profiel aanmaken
 
-### Hoe gebruik je mijn app?
+### Werking app
+
+De app werkt als volgt. Open de app op localhost:3000. Je komt op een scherm waar je je profiel kan aanmaken. Het is een soort formulier waar je o.a. je naam, leeftijd, locatie, profielfoto en een biografie kan invullen. Wanneer je het formulier submit, zie je een overview van je data als profiel. Je profiel is aangemaakt.
+
+### Hoe bekijk je mijn app?
 
 * Download mijn files (groene knop rechts boven)
 * Vraag mijn .env file aan
@@ -17,8 +21,11 @@ Functionaliteit: profiel aanmaken
 * Open mijn app door in de browser te gaan naar localhost:3000
 * Je bevindt je nu in mijn app
 
-#### Bronnen
-o.a.
+### Na peer-feedback
+Carlijn heeft me geholpen met mijn laatste errors en heeft daarna mijn werk gepeer-reviewd. Ze gaf aan dat ik nog wat meer comments kon plaatsen en mijn code kan verschonen. Ik ben alle code weggehaald die ik had ge-// en de volgorde wat logischer gemaakt. Ook heb ik met haar hulp een license.md aangemaakt. Ook heb ik na de peer-review mijn readme.md aangepast met meer informatie over mijn project en hoe je mijn app kunt bekijken.
+
+
+#### Bronnen (o.a.)
 
 * https://ejs.co/
 * https://expressjs.com
