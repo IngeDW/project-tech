@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/IngeDW/project-tech#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "moment-timezone": "^0.5.27",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "slug": "^2.1.1"
   }
 }
