@@ -47,7 +47,7 @@ body {
 h1 {
     padding: 0em 0.6em;
     text-align: center;
-    margin-top: 7.5em;
+    margin-top: 1.5em;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 2em;
@@ -68,6 +68,7 @@ h1 span {
 legend {
     padding: 0.3em 1.5em 0.5em;
     margin: 0;
+    margin-top: 0.75em;
     margin-bottom: 0.5em;
     text-align: center;
     font-family: 'Asap', sans-serif;
@@ -112,14 +113,7 @@ h4 {
     margin: 0.5em 0em;
 }
 
-p {
-    color: #1e1e3a;
-    padding: 0em 2em em;
-    line-height: 1.3;
-    font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-}
+
 
 /* ben je al geregistreerd? log in */
 #login {
@@ -148,11 +142,16 @@ form > p {
     text-align: left;
     padding: 0em 2.5em 2.5em;
     max-width: 365px;
-
+    color: black;
 }
 
 p > a {
-    color: #59B6AE;
+    color: black;
+}
+
+fieldset p {
+    color: black;
+    margin-top: 2em;
 }
 
 
@@ -235,14 +234,39 @@ form {
     box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
 }
 
+.uploadedImg {
+  min-width: 60vw;
+  border-radius: 50%;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  background-size: contain;
+
+}
+
 @media (min-width: 620px) {
     form {
         min-width: 375px;
         min-height: 70vh;
-
         margin-top: 6em;
         margin-left: 10em;
+        object-fit: cover;
 
+    }
+    .uploadedImg {
+        min-width: 200px;
+        min-height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: auto;
+        margin-left: auto;
+        display: block;
+        margin-top: 1em;
+        margin-bottom: 2em;
+        -webkit-box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
+        box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
     }
 }
 
@@ -402,9 +426,7 @@ input[type=password] {
 
 /* password voeg class toe met js als er te weinig letters zijn dus dan blijven de letters geel (of andersom input.lengt > 7 dan class toevoegen green)  */
 
-fieldset p {
-    color: rgb(28, 191, 216);
-}
+
 
 
 .profielfoto {
@@ -430,6 +452,9 @@ fieldset p {
   background-size: contain;
 }
 
+img {
+  max-width: 250px;
+}
 
 
 /*****************************
@@ -441,70 +466,4 @@ body {
     margin: 0;
     width: 100vw;
     background-color: #f1f1f1;
-}
-
-
-
-
-
-/*****************************
-           FOOTER
-******************************/
-
-footer {
-    background-image: url(../images/footer-img-octocat.png);
-    min-height: 2em;
-    background-position: center center;
-    background-size: 100vw;
-    background-repeat: no-repeat;
-    margin-top: 5em;
-    padding: 0;
-}
-
-
-
-#logo {
-    width: 150px;
-}
-
-nav {
-    padding: 1em 2em;
-    position: fixed;
-    top: 0;
-    min-width: 100vw;
-    z-index: 10;
-}
-
-li {
-    font-size: 0.9em;
-}
-
-nav a {
-    color: #59B6AE;
-    text-decoration: none;
-}
-
-
-nav ul {
-    list-style: none;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-}
-
-ul li {
-    margin-left: 2em;
-}
-
-nav li:hover {
-    font-weight: 400;
-}
-
-nav li:first-child {
-    margin-right: auto;
-    margin-left: 0;
-    text-transform: uppercase;
 }

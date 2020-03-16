@@ -1,0 +1,21 @@
+
+  <html lang="en">
+      <%- include('head.ejs'); %>
+
+         <body>
+            <form class="" action="index.html" method="post">
+              <legend><%= username %> profiel overzicht</legend>
+
+              <fieldset>
+               <img class="uploadedImg" alt src="/upload/<%= cover %>" >
+               <h2><%= username %>, <%= jaar %></h2>
+               <h6><img class="locationPin" src="/images/pin-fill-green.svg" alt=""> <%= regio %> </h6>
+               
+               <p><%= biografie %></p>
+             </fieldset>
+
+             <input type="submit" value="Bekijk matches!">
+           </form>
+
+         </body>
+</html>

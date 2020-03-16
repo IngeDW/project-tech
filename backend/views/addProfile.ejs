@@ -1,0 +1,56 @@
+
+  <form action="/add-profile" method="post" enctype= "multipart/form-data">
+         <!-- <div id="progressbar">
+           <div></div>
+         </div> -->
+
+     <legend><%= title %></legend>
+
+     <fieldset>
+
+         <label for="file"> Upload Image</label>
+         <input name="cover" type="file" accept="image/*" >
+         <br>
+         <label from='username'>Gebruikersnaam</label>
+         <input name='username' id="username" type="text" required>
+         <br>
+         <label for='geslacht'>Geslacht</label>
+            <div class="geslacht">
+                <input type="radio" id="male" name="gender" value="male">
+                <label  for="male">Male</label>
+                <br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label  for="other">Other</label>
+            </div>
+          <br>
+          <label for='datum'>Geboortedatum</label>
+          <input name='jaar' id='datum' type="date" required>
+          <br>
+          <label for='regio'>Provincie</label>
+              <select  name="regio" id="regio">
+                <option value="kies" selected>Kies een provincie </option>
+                <option value="Drenthe">Drenthe</option>
+                <option value="Flevoland">Flevoland</option>
+                <option value="Gelderland">Gelderland</option>
+                <option value="Groningen">Groningen</option>
+                <option value="Limburg">Limburg</option>
+                <option value="Noord-Brabant">Noord-Brabant</option>
+                <option value="Noord-Holland">Noord-Holland</option>
+                <option value="Overijssel">Overijssel</option>
+                <option value="Utrecht">Utrecht</option>
+                <option value="Zeeland">Zeeland</option>
+                <option value="Zuid-Holland">Zuid-Holland</option>
+              </select>
+          <br>
+          <label for="biografie">Over mij</label>
+          <textarea name="biografie"></textarea>
+          <br>
+
+      </fieldset>
+
+      <input type="submit" value="Maak een profiel aan">
+
+  </form>
