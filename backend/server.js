@@ -44,11 +44,14 @@ app.get('/about', (req, res) => res.send('Over mij'))
 app.get('/file', (req, res) => res.sendFile('/Users/inge/Documents/• HVA/JAAR 2/TECH/datingapp/static/images/banner6.jpg'))
 app.get('/mp3', (req, res) => res.sendFile('/Users/inge/Documents/• HVA/JAAR 2/TECH/datingapp/static/images/mpvierrr.mp4'))
 app.get('/profile/:id', profile)
-app.post('/add-profile', upload.single('cover'), myForm, addProfile)
-app.post('/', upload.single('cover'), addProfile)
+app.post('/add-profile', upload.single('cover'), myForm)
+app.post('/', upload.single('cover'), myForm)
 
 
 function myForm(req, res, next){
+  console.log(req.body);
+  var id = slug(req.body.username).toLowerCase()
+
   const username = req.body.username
   const regio = req.body.regio
   const jaar = req.body.jaar
@@ -65,6 +68,7 @@ function myForm(req, res, next){
   }
   req.session.form = form
   db.collection('profiles').insertOne(req.session.form)
+  res.redirect('profile/' + id)
  next()
 }
 
@@ -75,18 +79,27 @@ app.get('/profile/:id', profile)
 
 const allProfiles = []
 
-function addProfile(req, res, next) {
-  console.log(req.body);
-  var id = slug(req.body.username).toLowerCase()
-  db.collection('profiles').insertOne(req.session.form, function (error, response) {
-    if(error) {
-        console.log('Error occurred while inserting')
-        res.send('400 Bad Request Error')
-    } else {
-      res.redirect('profile/' + id)
-    }
- })
-}
+// function addProfile(req, res, next) {
+//   console.log(req.body);
+//   var id = slug(req.body.username).toLowerCase()
+//  //  db.collection('profiles').insertOne(req.session.form, function (error, response) {
+//  //    if(error) {
+//  //        console.log('Error occurred while inserting')
+//  //        res.send('400 Bad Request Error')
+//  //    } else {
+//  //      res.redirect('profile/' + id)
+//  //    }
+//  // })
+// }
+
+// function addProfile(req, res, next) {
+//   console.log(req.body);
+//   var id = slug(req.body.username).toLowerCase()
+//   db.collection('profiles').insertOne(req.session.form, res.redirect('profile/' + id)
+//
+// })
+
+
 
 
 function profile(req, res) {
