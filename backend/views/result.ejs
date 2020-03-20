@@ -4,10 +4,17 @@
 
          <body>
             <form class="" action="index.html" method="post">
-              <legend><%= username %> profiel overzicht</legend>
+              <legend>
+                <% if (user) { %>
+                    Hello <%= username %>, klopt dit?
+                  <% } else { %>
+                    Profiel overzicht
+                  <% } %>
+
+                <%= username %> profiel overzicht</legend>
 
               <fieldset>
-               <img class="uploadedImg" alt src="/upload/<%= cover %>" >
+               <img class="uploadedImg" src="/upload/<%= cover %>" >
                <h2><%= username %>, <%= jaar %></h2>
                <h6><img class="locationPin" src="/images/pin-fill-green.svg" alt=""> <%= regio %> </h6>
 

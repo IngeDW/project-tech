@@ -66,7 +66,7 @@ h1 span {
 }
 
 legend {
-    padding: 0.3em 1.5em 0.5em;
+    padding: 0.1em 1.5em 0.3em;
     margin: 0;
     margin-top: 0.75em;
     margin-bottom: 0.5em;
@@ -161,13 +161,22 @@ fieldset p {
 
 header {
     background-color: ghostwhite;
-    background-image: url(../images/banner8D.jpg);
     background-color: #e9e9e9;
+
+    background-color: lightpink;
+    background-image: url(../images/banner8D.jpg);
     min-height: 100vh;
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+}
+
+body {
+  background-image: url(static/images/banner8D.jpg);
+  width: 100vw;
+  height: 100vh;
+  background-color: lightpink;
 }
 
 
@@ -241,14 +250,14 @@ form {
   margin-left: auto;
   display: block;
   background-size: contain;
-
+  background-size: url(static/images/no-profile-picture.jpg);
 }
 
 @media (min-width: 620px) {
     form {
         min-width: 375px;
-        min-height: 70vh;
-        margin-top: 6em;
+        min-height: 65vh;
+        margin-top: 3em;
         margin-left: 10em;
         object-fit: cover;
 
@@ -288,14 +297,14 @@ label {
     color: #1e1e3a;
     font-size: 0.9em;
     font-weight: normal;
-    padding-bottom: 0.4em;
+    padding-bottom: 0.3em;
 }
 
 input,
 select,
 textarea {
     width: 100%;
-    padding: 0.5em 1em;
+    padding: 0.3em 1em;
     font-family: 'Open Sans', sans-serif;
     font-size: 0.9em;
     background-color: #e4e4e4;
