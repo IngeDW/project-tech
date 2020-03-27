@@ -111,13 +111,13 @@ function myForm(req, res){
 app.post('/sendUpdate', updateBio);                                     // Form actie update updateBiografie in Biografie
 
 function updateBio(req, res){
-  req.session.user.biografie = req.body.updateBiografie;
-	db.collection('profiles').updateOne(
-      // { _id: ObjectID(req.body._id)},
-      // { $set: {biografie: req.body.updateBiografie}},
-      // (err)=>{if (err) throw err;
-        // req.session.user.biografie = req.body.updateBiografie;
-        res.redirect('update/' + req.session.user._id));                       // Dit is de route + de mongoDB id. Neemt deze data mee naar profiel/
+	db.collection('profiles').updateOne(							// Update iets wat in de collection 'user' zit van MongoDB.
+		{_id: ObjectID(req.session.user._id)},							// Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
+		{ $set: {biografie: req.body.updateBiografie} }, // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
+		(err)=>{																		// nieuwe manier van function schrijven.
+			if (err) throw err;												// indien error, stuur error
+			res.redirect('update/' + req.session.user._id);	// ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
+		});
 }
 
 
