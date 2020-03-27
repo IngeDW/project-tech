@@ -9,7 +9,9 @@ const slug = require('slug')                          // Slug maakt url save (ve
 const session = require('express-session')
 const upload = multer({dest:'static/upload/'})
 require('dotenv').config()                            // Zodat je process.env.DB_USER etc. kunt gebruiken
-ObjectID = require('mongodb').ObjectID; 			      // mongo database
+ ObjectID = require('mongodb').ObjectID; 			      // mongo database
+
+
 
 // Database MongoDB
 
@@ -25,6 +27,7 @@ const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology:
   });
 
 
+
 // SET en USE
 
 app.set('view engine', 'ejs')                         // Template engine EJS
@@ -38,51 +41,37 @@ app.use(session({
     secret: process.env.SESSION_SECRET
   }))
 
+
+
 // GET: (get stuurt url naar client na aanvraag naar de server)
 
 app.get('/', (req, res) => res.render('index.ejs', {title:'Maak een profiel aan'}))
-app.get('/profile/:id', profile)
-app.get('*', (req, res) => res.send('404 error not found'))         // Als je op een route komt die ik niet gedefinieerd heb, laat hij een error zien
 
-// function profile(req, res, err) {
-//   const id = req.params.id
-//   if(!req.session.user){
-//     res.render('result.ejs', req.session.user)
-//   } else {
-//     return err ('Vul alle velden in om een juist profiel op te zetten.')
-//     console.log(err)
-//   }
-// }
+app.get('/profile/:id', profile)
 
 function profile(req, res) {
   db.collection('profiles').findOne(
-    {_id: ObjectID(req.params.id)},									    // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
-    function (err) {												    // Deze functie gaat af indien er iets is gevonden / of niet
-      if (err) throw err; 													    // Error
-      res.render('result.ejs', req.session.user);							    // Als je iets uit result wilt renderen in je ejs - mongo database
+    {_id: ObjectID(req.params.id)},									                      // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
+    function (err) {												                              // Deze functie gaat af indien er iets is gevonden / of niet
+      if (err) throw err; 													                      // Error
+      res.render('result.ejs', req.session.user);							            // Als je iets uit result wilt renderen in je ejs - mongo database
   });
 }
 
-//   if (!req.session.user) {
-//     // req.session.user = {username: user.username};
-//     // res.redirect('/')
-//     res.send('Vul alle velden in om een juist profiel op te zetten.')
-//   } else {
-//     res.render('result.ejs', req.session.user)
-//   }
-// }
+app.get('/update/:id', findIDtoUpdateResultPage);                         // Dit stuurt de user naar de overzichtspagina met alle ingevulde data
 
-app.get('/update/_id', findID);                         // Dit stuurt de user naar de overzichtspagina met alle ingevulde data
-
-function findID(req, res) {
-	db.collection('profiles').findOne(										// Vind 1 object uit de 'profiles' collection van m'n Mongo database
-		{_id: ObjectID(req.params.id)},									    // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
-		function (err, result) {												    // Deze functie gaat af indien er iets is gevonden / of niet
-			if (err) throw err; 													    // Error
-			res.render('update.ejs', result);							    // Als je iets uit result wilt renderen in je ejs - mongo database
-		}
-	);
+function findIDtoUpdateResultPage(req, res) {
+	db.collection('profiles').findOne(										                  // Vind 1 object uit de 'profiles' collection van m'n Mongo database
+		{_id: ObjectID(req.session.user._id)},									              // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
+		function (err, result) {												                      // Deze functie gaat af indien er iets is gevonden / of niet
+			if (err) throw err; 													                      // Error
+			res.render('update.ejs', result);							                      // Als je iets uit result wilt renderen in je ejs - mongo database
+		});
 }
+
+
+app.get('*', (req, res) => res.send('404 error not found'))               // Als je op een route komt die ik niet gedefinieerd heb, laat hij een error zien
+
 
 
 // POST: (client post data in de database via de server)
@@ -101,26 +90,21 @@ function myForm(req, res){
   }
     db.collection('profiles').insertOne(req.session.user, callback);               // Profiles is een map in de database waar req.session.user geinsered wordt
     function callback (err){
-      // req.session.user._id = result.insertedId;
       res.redirect('profile/' + req.session.user._id);
     }
 }
 
-// POST: update function
-
-app.post('/sendUpdate', updateBio);                                     // Form actie update updateBiografie in Biografie
+app.post('/sendUpdate', updateBio);                           // Form actie update updateBiografie in Biografie
 
 function updateBio(req, res){
-	db.collection('profiles').updateOne(							// Update iets wat in de collection 'user' zit van MongoDB.
-		{_id: ObjectID(req.session.user._id)},							// Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
-		{ $set: {biografie: req.body.updateBiografie} }, // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
-		(err)=>{																		// nieuwe manier van function schrijven.
-			if (err) throw err;												// indien error, stuur error
-			res.redirect('update/' + req.session.user._id);	// ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
+	db.collection('profiles').updateOne(						           	// Update iets wat in de collection 'user' zit van MongoDB.
+		{_id: ObjectID(req.session.user._id)},							      // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.body.id zit.
+		{ $set: {biografie: req.body.updateBiografie} },          // verandert in de Mongo database de textProfile naar updateTextProfile die is ingevuld.
+		(err)=>{																		              // nieuwe manier van function schrijven.
+			if (err) throw err;												              // indien error, stuur error
+			res.redirect('update/' + req.session.user._id);	        // ga terug naar de mijn_profiel.ejs incl. de juiste _id uit de database. Geen req.session.user._id, omdat dat local was en je hier dus niet kan gebruiken.
 		});
 }
-
-
 
 
 
