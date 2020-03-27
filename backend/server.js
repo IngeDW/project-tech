@@ -9,7 +9,7 @@ const slug = require('slug')                          // Slug maakt url save (ve
 const session = require('express-session')
 const upload = multer({dest:'static/upload/'})
 require('dotenv').config()                            // Zodat je process.env.DB_USER etc. kunt gebruiken
-
+	ObjectID = require('mongodb').ObjectID; 			      // mongo database
 
 // Database MongoDB
 
@@ -41,7 +41,6 @@ app.use(session({
 // GET: (get stuurt url naar client na aanvraag naar de server)
 
 app.get('/', (req, res) => res.render('index.ejs', {title:'Maak een profiel aan'}))
-app.get('/error', (req, res) => res.status(404).render('index.ejs', {title:'Panieek'}))
 app.get('/profile/:id', profile)
 app.get('*', (req, res) => res.send('404 error not found'))         // Als je op een route komt die ik niet gedefinieerd heb, laat hij een error zien
 
@@ -55,19 +54,35 @@ app.get('*', (req, res) => res.send('404 error not found'))         // Als je op
 //   }
 // }
 
-function profile(req, res, err) {
-  // const id = req.params.id
-  if (!req.session.user) {
-    // req.session.user = {username: user.username};
-    // res.redirect('/')
-    res.send('Vul alle velden in om een juist profiel op te zetten.')
-  } else {
-    res.render('result.ejs', req.session.user)
-  }
+function profile(req, res) {
+  db.collection('profiles').findOne(
+    {_id: ObjectID(req.params.id)},									    // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
+    function (err, result) {												    // Deze functie gaat af indien er iets is gevonden / of niet
+      if (err) throw err; 													    // Error
+      res.render('result.ejs', result);							    // Als je iets uit result wilt renderen in je ejs - mongo database
+  });
 }
 
+//   if (!req.session.user) {
+//     // req.session.user = {username: user.username};
+//     // res.redirect('/')
+//     res.send('Vul alle velden in om een juist profiel op te zetten.')
+//   } else {
+//     res.render('result.ejs', req.session.user)
+//   }
+// }
 
+app.get('/update/_id', findID);
 
+function findID(req, res) {
+	db.collection('profiles').findOne(										// Vind 1 object uit de 'profiles' collection van m'n Mongo database
+		{_id: ObjectID(req.params.id)},									    // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
+		function (err, result) {												    // Deze functie gaat af indien er iets is gevonden / of niet
+			if (err) throw err; 													    // Error
+			res.render('update.ejs', result);							    // Als je iets uit result wilt renderen in je ejs - mongo database
+		}
+	);
+}
 
 
 // POST: (client post data in de database via de server)
@@ -84,10 +99,25 @@ function myForm(req, res){
     biografie: req.body.biografie,
     cover: req.file ? req.file.filename : null
   }
-    db.collection('profiles').insertOne(req.session.user) // Profiles is een map in de database waar req.session.user geinsered wordt
-    // db.collection('profiles').update(req.session.user)
-    console.log(req.session.user)                         // Hier ergens update functie/method toevoegen om data up te daten in de database
-    res.redirect('profile/' + req.body.username)
+    db.collection('profiles').insertOne(req.session.user, callback);               // Profiles is een map in de database waar req.session.user geinsered wordt
+    function callback (err, result){
+      req.session.user._id = result.insertedId;
+      res.redirect('profile/' + req.session.user._id);
+    }
+}
+
+// POST: update function
+
+app.post('/sendUpdate', updateBio);                                     // Form actie update
+
+function updateBio(req, res){
+  req.session.user.biografie = req.body.updateBiografie;                // Je slaat textProfile op in de req.session.user
+	db.collection('profiles').updateOne(
+      { _id: ObjectID(req.body._id)},
+      { $set: {updateBiografie: req.body.updateBiografie}},
+      (err)=>{if (err) throw err;
+        res.redirect('update/' + req.body._id);                       // Dit is de route + de mongoDB id. Neemt deze data mee naar profiel/
+      });
 }
 
 // listen altijd als laatste

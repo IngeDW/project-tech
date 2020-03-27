@@ -3,25 +3,20 @@
       <%- include('head.ejs'); %>
 
          <body>
-            <form class="" action="index.html" method="post">
-              <legend>
-                <% if (user) { %>
-                    Hello <%= username %>, klopt dit?
-                  <% } else { %>
-                    Profiel overzicht
-                  <% } %>
-
-                <%= username %> profiel overzicht</legend>
+            <form class="" action="/sendUpdate" method="post">
+              <legend> Verander je biografie!</legend>
 
               <fieldset>
                <img class="uploadedImg" src="/upload/<%= cover %>" >
                <h2><%= username %>, <%= jaar %></h2>
                <h6><img class="locationPin" src="/images/pin-fill-green.svg" alt=""> <%= regio %> </h6>
-
-               <p><%= biografie %></p>
+               <br>
+               <textarea name="updateBiografie"><%= biografie %></textarea>
+               <br>
              </fieldset>
 
-             <input type="submit" value="Bekijk matches!">
+             <input type="submit" value="Check!">
+             <input type="hidden" name="_id" value="<%= _id %>" 
            </form>
 
          </body>
