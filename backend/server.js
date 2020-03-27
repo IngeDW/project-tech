@@ -9,14 +9,14 @@ const slug = require('slug')                          // Slug maakt url save (ve
 const session = require('express-session')
 const upload = multer({dest:'static/upload/'})
 require('dotenv').config()                            // Zodat je process.env.DB_USER etc. kunt gebruiken
-	ObjectID = require('mongodb').ObjectID; 			      // mongo database
+ObjectID = require('mongodb').ObjectID; 			      // mongo database
 
 // Database MongoDB
 
 var db;                                               // Connect met de database van Mongo
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@projecttech-hvfp2.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(url, { useNewUrlParser: true });
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true } );
   client.connect((err, client, res) => {
     if (err) {
       console.log(err)
@@ -57,9 +57,9 @@ app.get('*', (req, res) => res.send('404 error not found'))         // Als je op
 function profile(req, res) {
   db.collection('profiles').findOne(
     {_id: ObjectID(req.params.id)},									    // Zoek de _id in het ObjectID van MongoDB, met param.id die uit de url komt. De specifieke _id uit MongoDB, van de gebruiker die hier in de req.params.id zit.
-    function (err, result) {												    // Deze functie gaat af indien er iets is gevonden / of niet
+    function (err) {												    // Deze functie gaat af indien er iets is gevonden / of niet
       if (err) throw err; 													    // Error
-      res.render('result.ejs', result);							    // Als je iets uit result wilt renderen in je ejs - mongo database
+      res.render('result.ejs', req.session.user);							    // Als je iets uit result wilt renderen in je ejs - mongo database
   });
 }
 
@@ -72,7 +72,7 @@ function profile(req, res) {
 //   }
 // }
 
-app.get('/update/_id', findID);
+app.get('/update/_id', findID);                         // Dit stuurt de user naar de overzichtspagina met alle ingevulde data
 
 function findID(req, res) {
 	db.collection('profiles').findOne(										// Vind 1 object uit de 'profiles' collection van m'n Mongo database
@@ -100,25 +100,29 @@ function myForm(req, res){
     cover: req.file ? req.file.filename : null
   }
     db.collection('profiles').insertOne(req.session.user, callback);               // Profiles is een map in de database waar req.session.user geinsered wordt
-    function callback (err, result){
-      req.session.user._id = result.insertedId;
+    function callback (err){
+      // req.session.user._id = result.insertedId;
       res.redirect('profile/' + req.session.user._id);
     }
 }
 
 // POST: update function
 
-app.post('/sendUpdate', updateBio);                                     // Form actie update
+app.post('/sendUpdate', updateBio);                                     // Form actie update updateBiografie in Biografie
 
 function updateBio(req, res){
-  req.session.user.biografie = req.body.updateBiografie;                // Je slaat textProfile op in de req.session.user
+  req.session.user.biografie = req.body.updateBiografie;
 	db.collection('profiles').updateOne(
-      { _id: ObjectID(req.body._id)},
-      { $set: {updateBiografie: req.body.updateBiografie}},
-      (err)=>{if (err) throw err;
-        res.redirect('update/' + req.body._id);                       // Dit is de route + de mongoDB id. Neemt deze data mee naar profiel/
-      });
+      // { _id: ObjectID(req.body._id)},
+      // { $set: {biografie: req.body.updateBiografie}},
+      // (err)=>{if (err) throw err;
+        // req.session.user.biografie = req.body.updateBiografie;
+        res.redirect('update/' + req.session.user._id));                       // Dit is de route + de mongoDB id. Neemt deze data mee naar profiel/
 }
+
+
+
+
 
 // listen altijd als laatste
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
