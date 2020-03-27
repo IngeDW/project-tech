@@ -35,8 +35,10 @@
     transition-delay: 150ms;
     padding: 0;
     line-height: 1.4em;
+
     transition: width 0.2s;
 }
+
 
 body {
     overflow-x: hidden;
@@ -110,7 +112,7 @@ p {
     font-weight: 500;
 }
 
-/* ben je al geregistreerd? log in */
+/* ben je al geregistreerd? log in  (link)*/
 #login {
     color: #1e1e3a;
     line-height: 1.6;
@@ -120,16 +122,23 @@ p {
 }
 
 h5 {
-    font-size: 1em;
-    margin-bottom: 10px;
+    color: grey;
+    margin: 0.3em 0em;
+    margin-bottom: -1em;
+    font-weight: 300;
+    font-size: 0.7em;
+    text-align: right;
 }
 
 h6 {
-    font-size: 1em;
-    margin: -1em 0em -1em;
+    color: #59B6AE;
+    margin: -1em 0em -0.5em;
+    padding: 0;
     font-weight: 400;
-    color: #1e1e3a;
+    font-size: 0.8em;
+    text-align: left;
 }
+
 
 
 form > p {
@@ -150,7 +159,7 @@ p > a {
 ******************************/
 .eersteForm.weg {
     position: fixed;
-    transform: translateX(-600px);
+    transform: translateX(-700px);
     transition: 150ms transform;
 }
 
@@ -160,7 +169,7 @@ p > a {
 
 #introduction.wegIntro {
     position: fixed;
-    transform: translateX(-600px);
+    transform: translateX(-700px);
     transition: 150ms transform;
 }
 
@@ -178,11 +187,24 @@ header {
 
 #introduction {
     position: absolute;
-    margin: 5em 7.5em;
-    width: 400px;
+    max-width: 85vw;
+    margin: auto;
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
+    margin-top: 13vh;
 }
 
-#homebutton {
+
+@media (min-width: 620px) {
+    #introduction {
+        max-width: 40vw;
+        min-height: 70vh;
+        margin: 5em 7.5em;
+    }
+}
+
+/* Knop om in html naar form te scrollen en met css om naar form te gaan */
+a[href="#scrollToForm"] {
     background: rgb(28, 191, 216);
     background: linear-gradient(225deg, rgba(28, 191, 216, 1) 0%, rgba(89, 182, 174, 1) 100%);
     color: white;
@@ -190,12 +212,11 @@ header {
     border-radius: 25px;
     font-size: 1em;
     cursor: pointer;
-    margin-top: 1.5em;
+    margin-top: 3em;
     padding: 0.75em 2em;
-    bottom: -1em;
-     -webkit-box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
+    -webkit-box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
     box-shadow: 1px 3px 12px -1px rgba(112, 112, 112, 0.34);
-      text-decoration: none;
+    text-decoration: none;
 }
 
 #backicon {
@@ -204,7 +225,6 @@ header {
     left: 2em;
     position: absolute;
 }
-
 
 #progressbar {
     background-color: ghostwhite;
@@ -279,7 +299,7 @@ fieldset {
     padding-top: 1em;
     color: white;
     margin: 0;
-    padding: 1em 2em 1em;
+    padding: 0.5em 2em 0.5em;
 
 }
 
@@ -358,28 +378,28 @@ input[type=submit] {
 /*stijlen van gender radiobuttons*/
 
 input[type=radio] {
-  opacity:  ;
-  display: none;
+    opacity: ;
+    display: none;
 }
 
-.geslacht label  {
-  border: 1px solid black;
-  padding: 0.4em 2em;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.9em;
-  background-color: #e4e4e4;
-  background-color: #e9e9e9;
-  border: none;
-  margin: 0em 0em 0em;
-  display: block;
-  border: 1px solid #e9e9e9;
+.geslacht label {
+    border: 1px solid black;
+    padding: 0.4em 2em;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+    background-color: #e4e4e4;
+    background-color: #e9e9e9;
+    border: none;
+    margin: 0em 0em 0em;
+    display: block;
+    border: 1px solid #e9e9e9;
 
 }
 
-.geslacht  {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.2em 0em;
+.geslacht {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2em 0em;
 }
 
 .geslacht input[type="radio"]:checked + label {
@@ -387,13 +407,13 @@ input[type=radio] {
     border: solid 1px yellowgreen;
     background-image: url(../images/check-yellowgreen.svg);
     background-repeat: no-repeat;
-    background-position: 3px ;
+    background-position: 3px;
     background-size: 2em;
 }
 
 [type="radio"] {
-position: relative;
-	left: -100px;
+    position: relative;
+    left: -100px;
 }
 
 
@@ -403,6 +423,7 @@ input[type=password] {
     color: #59B6AE;
     color: yellowgreen;
 }
+
 /* password voeg class toe met js als er te weinig letters zijn dus dan blijven de letters geel (of andersom input.lengt > 7 dan class toevoegen green)  */
 
 
@@ -423,7 +444,7 @@ fieldset p {
 .locationPin {
     width: 1.25em;
 }
- 
+
 
 /*****************************
            BODY

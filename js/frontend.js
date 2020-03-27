@@ -4,7 +4,7 @@
 
 // Retrieves tags to use in JavaScript
 const introduction = document.querySelector('[data-introduction]');
-const buttonIntro = document.querySelector('[data-introductionButton]');
+const buttonIntro = document.querySelector('[href="#scrollToForm"]');
 const profileForm = document.querySelector('[data-profileForm]');
 
 
