@@ -45,7 +45,7 @@ app.use(session({
 
 // GET: (get stuurt url naar client na aanvraag naar de server)
 
-app.get('/', (req, res) => res.render('index.ejs', {title:'Maak een profiel aan'}))
+app.get('/', (req, res) => res.render('index.ejs'))
 
 app.get('/profile/:id', profile)
 
@@ -79,7 +79,7 @@ function logOutProfile (req, res, next) {
   })
 }
 
-
+app.get('/to-add-profile', (req, res) => res.render('index.ejs'))
 
 app.get('*', (req, res) => res.send('404 error not found'))                     // Als je op een route komt die ik niet gedefinieerd heb, laat hij een error zien
 
@@ -127,6 +127,9 @@ function toDatingPage(req, res, result){
       res.render('datingPage.ejs', result);							                            // Als je iets uit result wilt renderen in je ejs - mongo database
     });
   }
+
+app.post('/toAddProfile', (res, req) =>res.render('addProfile.ejs'));                                          // Form actie om updateBiografie in Biografie te updaten
+
 
 // listen altijd als laatste
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
