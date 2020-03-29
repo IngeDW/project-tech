@@ -4,20 +4,22 @@
 
          <body>
            <body>
-              <form>
-                <legend> Je profiel is klaar!
+              <form action="/datingPage" method="post">
+                <legend> <%=username %>, je profiel is klaar!
                 </legend>
 
                 <fieldset>
                  <img class="uploadedImg" src="/upload/<%= cover %>" >
                  <h2><%= username %>, <%= jaar %></h2>
                  <h6><img class="locationPin" src="/images/pin-fill-green.svg" alt=""> <%= regio %> </h6>
-                 <br>
+
                  <p><%= biografie %></p>
+                 <!-- <a href="/remove-profile" id="removeProfileButton">Verwijder dit profiel</a> -->
                  <br>
+
                </fieldset>
 
-               <input type="submit" value="Bekijk matches!">
+               <input type="submit" value="Start met daten!">
                <input type="hidden" name="_id" value="<%= _id %>" 
 
              </form>

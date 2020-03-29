@@ -4,13 +4,14 @@
 
          <body>
             <form class="" action="/sendUpdate" method="post">
-              <legend> Verander je biografie!</legend>
+              <legend> Dat kan spannender!</legend>
 
               <fieldset>
                <img class="uploadedImg" src="/upload/<%= cover %>" >
                <h2><%= username %>, <%= jaar %></h2>
                <h6><img class="locationPin" src="/images/pin-fill-green.svg" alt=""> <%= regio %> </h6>
                <br>
+               <label for="biografie">Over mij</label>
                <textarea name="updateBiografie"><%= biografie %></textarea>
                <br>
              </fieldset>
