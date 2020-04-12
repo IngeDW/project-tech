@@ -222,7 +222,8 @@ a[href="#scrollToForm"] {
 /*****************************
         PROGRESS BAR
 ******************************/
-/*BRON: Progress Bar with HTML and CSS. (2011, 25 augustus). Geraadpleegd op 24 maart 2020, van https://stackoverflow.com/questions/7190898/progress-bar-with-html-and-css/7191095*/
+
+/*SOURCE: Progress Bar with HTML and CSS. (2011, 25 augustus). Geraadpleegd op 24 maart 2020, van https://stackoverflow.com/questions/7190898/progress-bar-with-html-and-css/7191095*/
 
 #progressbar {
   background-color: ghostwhite;
@@ -400,7 +401,6 @@ input[type=radio] {
   left: -100px;
 }
 
-/* password voeg class toe met js als er te weinig letters zijn dus dan blijven de letters geel (of andersom input.lengt > 7 dan class toevoegen green)  */
 input[type=password] {
   color: yellowgreen;
 }
