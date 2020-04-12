@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="40" viewBox="0 0 100 40">
+  <defs>
+    <clipPath id="clip-logo-blush">
+      <rect width="100" height="40"/>
+    </clipPath>
+  </defs>
+  <g id="logo-blush" clip-path="url(#clip-logo-blush)">
+    <text id="Blush" transform="translate(4 -2)" fill="#1e1e3a" font-size="30" font-family="Playfair Display" font-weight="700" letter-spacing="0.01em"><tspan x="0" y="32">Blush</tspan></text>
+    <g id="Group_10" data-name="Group 10" transform="translate(79.34 -19.315)">
+      <path id="Path_9" data-name="Path 9" d="M26.085,431.513c-2.091-2.323-3.949,0-3.02,1.858a5.736,5.736,0,0,0,3.02,2.555,5.735,5.735,0,0,0,3.02-2.555C30.034,431.513,28.175,429.19,26.085,431.513Z" transform="translate(-14.751 -386.922)" fill="#fe5578"/>
+      <path id="Path_10" data-name="Path 10" d="M24.384,432.743a2.176,2.176,0,0,1,.1-2.19c-1.295-.13-2.1,1.47-1.421,2.825a5.736,5.736,0,0,0,3.02,2.555,5.975,5.975,0,0,0,1.271-.652A5.7,5.7,0,0,1,24.384,432.743Z" transform="translate(-14.82 -386.847)" fill="#fe3f67"/>
+    </g>
+  </g>
+</svg>

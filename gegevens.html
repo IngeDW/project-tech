@@ -1,94 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Datingapp</title>
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Asap:600&display=swap" rel="stylesheet">
+    <meta charset='UTF-8'>
+    <title>BLUSH</title>
+    <link rel='stylesheet' type='text/css' href='style/style.css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:400,400i,600,600i,700,700i,800,800i|Roboto+Mono:400,400i,500,500i,700,700i&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Asap:600&display=swap' rel='stylesheet'>
+    <link rel='icon' href='images/favicon.ico' type='image/x-icon'/>
 </head>
 
 <body>
 
     <header>
 
-
         <nav>
             <ul>
-                <li><a href="index.html"><img id='logo' src="images/logo2.png" alt=""></a></li>
-
+                <li><a href='index.html'><img id='logo' src='images/logo-blush.svg' alt='Logo blush'></a></li>
             </ul>
         </nav>
 
-
-        <form action="biografie.html">
-
-            <a href="index.html"><img id="backicon" src="images/back-green.svg" alt=""></a>
-            <div id="progressbar">
-                <div id="progress2"></div>
+        <form action='biografie.html' class='positioningForm'>
+            <a href='index.html'><img id='backicon' src='images/kruis.png' alt='Go back icon'></a>
+            
+            <div id='progressbar'>
+                <div id='progress2'></div>
             </div>
+            
+            <!--SOURCE: Progress Bar with HTML and CSS. (2011, 25 augustus). Geraadpleegd op 24 maart 2020, van https://stackoverflow.com/questions/7190898/progress-bar-with-html-and-css/7191095-->
 
             <legend>Maak een profiel</legend>
-
-
             <fieldset>
-                <label from='datum'>Geboortedatum</label>
-                <input id='datum' type="date" required>
+                <label from='birthday'>Geboortedatum</label>
+                <input id='birthday' type='date' required>
                 <br>
                 <label from='regio'>Provincie</label>
-
-                <select id="regio">
-                    <option value="volvo" selected>Kies een provincie </option>
-                    <option value="volvo">Noord-Holland</option>
-                    <option value="saab">Zuid-Holland</option>
-                    <option value="mercedes">Utrecht</option>
-                    <option value="audi">Groningen</option>
+                <select id='regio'>
+                    <option value='geenRegio' selected>Kies een provincie </option>
+                    <option value='Drenthe'>Drenthe</option>
+                    <option value='Flevoland'>Flevoland</option>
+                    <option value='Friesland'>Friesland</option>
+                    <option value='Gelderland'>Gelderland</option>
+                    <option value='Groningen'>Groningen</option>
+                    <option value='Limburg'>Limburg</option>
+                    <option value='Noord-Brabant'>Noord-Brabant</option>
+                    <option value='Noord-Holland'>Noord-Holland</option>
+                    <option value='Overijssel'>Overijssel</option>
+                    <option value='Utrecht'>Utrecht</option>
+                    <option value='Zeeland'>Zeeland</option>
+                    <option value='Zuid-Holland'>Zuid-Holland</option>
                 </select>
                 <br>
-                <label for='geslacht'>Geslacht</label>
-                  <div class="geslacht">
-                <input type="radio" id="male" name="gender" value="male">
-                <label  for="male">Male</label>
-                <br>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label>
-                <br>
-                <input type="radio" id="other" name="gender" value="other">
-                <label  for="other">Other</label>
-                  </div>
-                
-                
-                
-<!--
-                <label from='geslacht'>Geslacht</label>
-                <div class="radio"> <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label><br>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label><br>
-                    <input type="radio" id="other" name="gender" value="other">
-                    <label for="other">Other</label>
+                <label for='gender'>Geslacht</label>
+                <div class='gender'>
+                    <input type='radio' id='male' name='gender' value='male'>
+                    <label for='male'>Male</label>
+                    <br>
+                    <input type='radio' id='female' name='gender' value='female'>
+                    <label for='female'>Female</label>
+                    <br>
+                    <input type='radio' id='other' name='gender' value='other'>
+                    <label for='other'>Other</label>
                 </div>
--->
                 <br>
-
-
             </fieldset>
-
-
-            <input type="submit" value="Volgende" href="biografie.html">
-
+            <input type='submit' value='Volgende' href='biografie.html'>
         </form>
-
     </header>
-
-
-
-
-
+    
+    <script src='js/frontend.js'></script> 
 </body>
-
-<script src="js/javascript.js"></script>
-
 </html>
