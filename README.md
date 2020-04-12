@@ -25,7 +25,7 @@ Carlijn heeft me geholpen met mijn laatste errors en heeft daarna mijn werk gepe
 In een wiki genaamd BACKEND is informatie te zien die ik in de les heb opgeslaan.
 
 
-### Bronnen (o.a.)
+### Bronnen Backend
 * https://ejs.co/
 * https://expressjs.com
 * https://nodejs.org/en/
