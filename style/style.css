@@ -322,11 +322,13 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  /* Removes default arrow */
+  /* Removes default arrow (“How to remove the default arrow icon from a dropdown list (select element)?”, 2013) */
   background-image: url(../images/backback-green.svg);
   background-repeat: no-repeat;
   background-position: right;
 }
+
+/*SOURCE: How to remove the default arrow icon from a dropdown list (select element)? (2013, 17 mei). Geraadpleegd op 13 april 2020, van https://stackoverflow.com/questions/16603979/how-to-remove-the-default-arrow-icon-from-a-dropdown-list-select-element*/
 
 input:valid {
   border: solid 1px yellowgreen;
